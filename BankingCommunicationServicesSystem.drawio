@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="28.2.5">
+  <diagram name="Banking Communication Services System" id="uml2">
+    <mxGraphModel dx="911" dy="678" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="User" value="-&#xa;- userId: String&#xa;- name: String&#xa;- surname: String&#xa;- emailAddress: String&#xa;- phoneNumber: String" style="shape=rectangle;whiteSpace=wrap;rounded=1;dashed=1;align=left;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="290" y="130" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Customer" value="&#xa;- customerId: String" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BankStaff" value="&#xa;- bankStaffId: String&#xa;- departmentName: String" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="200" y="320" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ChannelAdmin" value="&#xa;- channelAdminId: String" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="400" y="320" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SysAdmin" value="&#xa;- systemAdminId: String" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="580" y="320" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Message" value="&#xa;- messageId: String&#xa;- subject: String&#xa;- body: String&#xa;- createdAt: DateTime&#xa;- scheduledAt: DateTime&#xa;- status: MessageStatus&#xa;- /deliveryRate: Double" style="shape=rectangle;whiteSpace=wrap;rounded=1;dashed=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="640" width="240" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="EmailMessage" value="&#xa;- attachments: String[]" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="840" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SMSMessage" value="&#xa;/smsParts: Integer" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="200" y="840" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Campaign" value="&#xa;- campaignId: String&#xa;- name: String&#xa;- startDate: Date&#xa;- endDate: Date" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="400" y="665" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Delivery" value="&#xa;- deliveryId: String&#xa;- status: MessageStatus&#xa;- attempts: Integer" style="shape=rectangle;whiteSpace=wrap;rounded=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="480" y="460" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Sustainability" value="&#xa;- metricId: String&#xa;- energyKWh: Double&#xa;- co2Kg: Double" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#e1f5e1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="390" y="840" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="creates" parent="1" source="BankStaff" target="Campaign" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="contains *" parent="1" source="Campaign" target="Message" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="0..*" style="entryX=0;entryY=0.925;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.917;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Message" target="Delivery" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="1" parent="1" source="Delivery" target="Customer" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="measuredBy" parent="1" source="Campaign" target="Sustainability" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen1" style="endArrow=block;endFill=0;" parent="1" source="Customer" target="User" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen2" style="endArrow=block;endFill=0;" parent="1" source="BankStaff" target="User" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen3" style="endArrow=block;endFill=0;" parent="1" source="ChannelAdmin" target="User" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen4" style="endArrow=block;endFill=0;" parent="1" source="SysAdmin" target="User" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen5" style="endArrow=block;endFill=0;" parent="1" source="EmailMessage" target="Message" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gen6" style="endArrow=block;endFill=0;" parent="1" source="SMSMessage" target="Message" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-2" value="&lt;b&gt;User&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="130" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-6" value="&lt;b&gt;Customer&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-7" value="&lt;b&gt;BankStaff&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="320" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-8" value="&lt;b&gt;ChannelAdmin&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-9" value="&lt;b&gt;SystemAdmin&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="320" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-10" value="&lt;b&gt;Delivery&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="460" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-11" value="&lt;b&gt;Message&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="640" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-13" value="&lt;b&gt;Campaign&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-14" value="&lt;b&gt;EmailMessage&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="840" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-15" value="&lt;b&gt;SMSMessage&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="840" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Fq8tpjSBLrK2CluwnDzK-16" value="&lt;b&gt;SustainabilityMetric&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="840" width="200" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
